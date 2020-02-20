@@ -1,0 +1,42 @@
+{% set name = "djangocms-equation" %}
+{% set version = "0.1.0" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: 67332c9d80883842c8f427f09918fea9b939012b8ca9b3bdaed494b01685edf6
+
+build:
+  number: 0
+  noarch: python
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - pip
+    - python
+  run:
+    - django >=1.11,<3.0
+    - django-cms >=3.4,<3.8
+    - djangocms-text-ckeditor >=3.2.1
+    - python
+
+test:
+  imports:
+    - djangocms_equation
+
+about:
+  home: "https://github.com/s-weigand/djangocms-equation"
+  license: Apache 2.0
+  license_family: APACHE
+  license_file: LICENSE
+  summary: "DjangoCMS plugin to write equations, utilizing KaTeX"
+  doc_url: "https://djangocms-equation.readthedocs.io/en/latest/?badge=latest"
+  dev_url: "https://github.com/s-weigand/djangocms-equation"
+
+extra:
+  recipe-maintainers:
+    - s-weigand
